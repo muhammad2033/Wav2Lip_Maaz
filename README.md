@@ -1,161 +1,205 @@
-# **Wav2Lip**: *Accurately Lip-syncing Videos In The Wild*
+🎥 Wav2Lip – Customized & Deployment-Ready Implementation
 
-## ***This repository has been forked from an updated Wav2Lip repository and streamlined by Ahrimdon. This repository fixes many of setup and requirement issues the other Wav2Lip repositories have. This should be pretty straightforward.***
+This repository contains a customized and deployment-friendly implementation of Wav2Lip, a state-of-the-art lip synchronization model originally developed by Rudrabha et al.
 
-This code is part of the paper: _A Lip Sync Expert Is All You Need for Speech to Lip Generation In the Wild_ published at ACM Multimedia 2020. 
+The primary purpose of this repository is to adapt the original research codebase for real-world usage, including client demos, web-based testing, and modern Python environments (Python 3.12+).
 
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/a-lip-sync-expert-is-all-you-need-for-speech/lip-sync-on-lrs2)](https://paperswithcode.com/sota/lip-sync-on-lrs2?p=a-lip-sync-expert-is-all-you-need-for-speech)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/a-lip-sync-expert-is-all-you-need-for-speech/lip-sync-on-lrs3)](https://paperswithcode.com/sota/lip-sync-on-lrs3?p=a-lip-sync-expert-is-all-you-need-for-speech)
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/a-lip-sync-expert-is-all-you-need-for-speech/lip-sync-on-lrw)](https://paperswithcode.com/sota/lip-sync-on-lrw?p=a-lip-sync-expert-is-all-you-need-for-speech)
+🔹 Original Work & Credit
 
-|📑 Original Paper|📰 Project Page|🌀 Demo|⚡ Live Testing|📔 Colab Notebook
-|:-:|:-:|:-:|:-:|:-:|
-[Paper](http://arxiv.org/abs/2008.10010) | [Project Page](http://cvit.iiit.ac.in/research/projects/cvit-projects/a-lip-sync-expert-is-all-you-need-for-speech-to-lip-generation-in-the-wild/) | [Demo Video](https://youtu.be/0fXaDCZNOJc) | [Interactive Demo](https://bhaasha.iiit.ac.in/lipsync) | [Colab Notebook](https://colab.research.google.com/drive/1tZpDWXz49W6wDcTprANRGLo2D_EbD5J8?usp=sharing) /[Updated Collab Notebook](https://colab.research.google.com/drive/1IjFW1cLevs6Ouyu4Yht4mnR4yeuMqO7Y#scrollTo=MH1m608OymLH)
+This project is based on the original Wav2Lip repository:
 
- <img src="https://drive.google.com/uc?export=view&id=1Wn0hPmpo4GRbCIJR8Tf20Akzdi1qjjG9"/>
+Author: Rudrabha et al.
 
-----------
-**Highlights**
-----------
- - Weights of the visual quality disc has been updated in readme!
- - Lip-sync videos to any target speech with high accuracy :100:. Try our [interactive demo](https://bhaasha.iiit.ac.in/lipsync).
- - :sparkles: Works for any identity, voice, and language. Also works for CGI faces and synthetic voices.
- - Complete training code, inference code, and pretrained models are available :boom:
- - Or, quick-start with the Google Colab Notebook: [Link](https://colab.research.google.com/drive/1tZpDWXz49W6wDcTprANRGLo2D_EbD5J8?usp=sharing). Checkpoints and samples are available in a Google Drive [folder](https://drive.google.com/drive/folders/1I-0dNLfFOSFwrfqjNa-SXuwaURHE5K4k?usp=sharing) as well. There is also a [tutorial video](https://www.youtube.com/watch?v=Ic0TBhfuOrA) on this, courtesy of [What Make Art](https://www.youtube.com/channel/UCmGXH-jy0o2CuhqtpxbaQgA). Also, thanks to [Eyal Gruss](https://eyalgruss.com), there is a more accessible [Google Colab notebook](https://j.mp/wav2lip) with more useful features. A tutorial collab notebook is present at this [link](https://colab.research.google.com/drive/1IjFW1cLevs6Ouyu4Yht4mnR4yeuMqO7Y#scrollTo=MH1m608OymLH).  
- - :fire: :fire: Several new, reliable evaluation benchmarks and metrics [[`evaluation/` folder of this repo]](https://github.com/Rudrabha/Wav2Lip/tree/master/evaluation) released. Instructions to calculate the metrics reported in the paper are also present.
+Original Repository: https://github.com/Rudrabha/Wav2Lip
 
---------
-**Disclaimer**
---------
-All results from this open-source code or our [demo website](https://bhaasha.iiit.ac.in/lipsync) should only be used for research/academic/personal purposes only. As the models are trained on the <a href="http://www.robots.ox.ac.uk/~vgg/data/lip_reading/lrs2.html">LRS2 dataset</a>, any form of commercial use is strictly prohibited. For commercial requests please contact us directly!
+Paper:
+A Lip Sync Expert Is All You Need for Speech to Lip Generation
+ACM Multimedia 2020
 
-Prerequisites
--------------
-- `Python 3.7` (Tested with `Python 3.7.0`) 
-- ffmpeg: `sudo apt-get install ffmpeg` or [Add the Binary to PATH](https://github.com/BtbN/FFmpeg-Builds/releases)
-- Wav2Lip model `wav2lip.pth` or `wav2lip_gan.pth` downloaded to `checkpoints/`
-- Face detection [pre-trained model](https://www.adrianbulat.com/downloads/python-fan/s3fd-619a316812.pth) should be downloaded to `face_detection/detection/sfd/s3fd.pth`. Alternative [link](https://iiitaphyd-my.sharepoint.com/:u:/g/personal/prajwal_k_research_iiit_ac_in/EZsy6qWuivtDnANIG73iHjIBjMSoojcIV0NULXV-yiuiIg?e=qTasa8) if the above does not work.
+All credit for the model architecture, training methodology, and research contributions belongs to the original authors.
 
-Install
--------------
-- Clone the repository `git clone https://github.com/Ahrimdon/Wav2Lip.git && cd Wav2Lip`
-- Install requirements `pip install -r requirements.txt`
-- Resize video and change FPS using `reduce_fps.bat` or `reduce_fps.ps1`
-    * *Videos that are 25/30 FPS and 1280x720p will yield the best results*
-- Run `wav2lip.bat` with your custom parameters to start syncing lips!
+🎯 Purpose of This Repository
 
+The original Wav2Lip implementation is research-oriented.
+This repository focuses on making Wav2Lip:
 
-Getting the weights
-----------
-| Model  | Description |  Link to the model | 
-| :-------------: | :---------------: | :---------------: |
-| Wav2Lip  | Highly accurate lip-sync | [Link](https://iiitaphyd-my.sharepoint.com/:u:/g/personal/radrabha_m_research_iiit_ac_in/Eb3LEzbfuKlJiR600lQWRxgBIY27JZg80f7V9jtMfbNDaQ?e=TBFBVW)  |
-| Wav2Lip + GAN  | Slightly inferior lip-sync, but better visual quality | [Link](https://iiitaphyd-my.sharepoint.com/:u:/g/personal/radrabha_m_research_iiit_ac_in/EdjI7bZlgApMqsVoEUUXpLsBxqXbn5z8VTmoxp55YNDcIA?e=n9ljGW) |
-| Expert Discriminator  | Weights of the expert discriminator | [Link](https://iiitaphyd-my.sharepoint.com/:u:/g/personal/radrabha_m_research_iiit_ac_in/EQRvmiZg-HRAjvI6zqN9eTEBP74KefynCwPWVmF57l-AYA?e=ZRPHKP) |
-| Visual Quality Discriminator  | Weights of the visual disc trained in a GAN setup | [Link](https://iiitaphyd-my.sharepoint.com/:u:/g/personal/radrabha_m_research_iiit_ac_in/EQVqH88dTm1HjlK11eNba5gBbn15WMS0B0EZbDBttqrqkg?e=ic0ljo) |
+Easier to run in modern environments
 
-Lip-syncing videos using the pre-trained models (Inference)
--------
-You can lip-sync any video to any audio:
-```bash
-python inference.py --checkpoint_path <ckpt> --face <video.mp4> --audio <an-audio-source> 
-```
-The result is saved (by default) in `results/result_voice.mp4`. You can specify it as an argument,  similar to several other available options. The audio source can be any file supported by `FFMPEG` containing audio data: `*.wav`, `*.mp3` or even a video file, from which the code will automatically extract the audio.
+Stable for client testing & demos
 
-##### Tips for better results:
-- Experiment with the `--pads` argument to adjust the detected face bounding box. Often leads to improved results. You might need to increase the bottom padding to include the chin region. E.g. `--pads 0 20 0 0`.
-- If you see the mouth position dislocated or some weird artifacts such as two mouths, then it can be because of over-smoothing the face detections. Use the `--nosmooth` argument and give it another try. 
-- Experiment with the `--resize_factor` argument, to get a lower-resolution video. Why? The models are trained on faces that were at a lower resolution. You might get better, visually pleasing results for 720p videos than for 1080p videos (in many cases, the latter works well too). 
-- The Wav2Lip model without GAN usually needs more experimenting with the above two to get the most ideal results, and sometimes, can give you a better result as well.
+Suitable for API-based deployment
 
-Preparing LRS2 for training
-----------
-Our models are trained on LRS2. See [here](#training-on-datasets-other-than-lrs2) for a few suggestions regarding training on other datasets.
-##### LRS2 dataset folder structure
+Compatible with Python 3.12+ and latest dependencies
 
-```
-data_root (mvlrs_v1)
-├── main, pretrain (we use only main folder in this work)
-|	├── list of folders
-|	│   ├── five-digit numbered video IDs ending with (.mp4)
-```
+🔧 Key Modifications & Enhancements
 
-Place the LRS2 filelists (train, val, test) `.txt` files in the `filelists/` folder.
+The following non-research modifications were introduced:
 
-##### Preprocess the dataset for fast training
+✅ Usability Improvements
 
-```bash
-python preprocess.py --data_root data_root/main --preprocessed_root lrs2_preprocessed/
-```
-Additional options like `batch_size` and the number of GPUs to use in parallel to use can also be set.
+Simplified inference workflow
 
-##### Preprocessed LRS2 folder structure
-```
-preprocessed_root (lrs2_preprocessed)
-├── list of folders
-|	├── Folders with five-digit numbered video IDs
-|	│   ├── *.jpg
-|	│   ├── audio.wav
-```
+Better error handling for invalid inputs
 
-Train!
-----------
-There are two major steps: (i) Train the expert lip-sync discriminator, (ii) Train the Wav2Lip model(s).
+Stable execution for short demo clips
 
-##### Training the expert discriminator
-You can download [the pre-trained weights](#getting-the-weights) if you want to skip this step. To train it:
-```bash
-python color_syncnet_train.py --data_root lrs2_preprocessed/ --checkpoint_dir <folder_to_save_checkpoints>
-```
-##### Training the Wav2Lip models
-You can either train the model without the additional visual quality discriminator (< 1 day of training) or use the discriminator (~2 days). For the former, run: 
-```bash
-python wav2lip_train.py --data_root lrs2_preprocessed/ --checkpoint_dir <folder_to_save_checkpoints> --syncnet_checkpoint_path <path_to_expert_disc_checkpoint>
-```
+Cleaner structure for backend integration
 
-To train with the visual quality discriminator, you should run `hq_wav2lip_train.py` instead. The arguments for both files are similar. In both cases, you can resume training as well. Look at `python wav2lip_train.py --help` for more details. You can also set additional less commonly-used hyper-parameters at the bottom of the `hparams.py` file.
+✅ Deployment Readiness
 
-Training on datasets other than LRS2
-------------------------------------
-Training on other datasets might require modifications to the code. Please read the following before you raise an issue:
+Compatible with FastAPI / Flask backends
 
-- You might not get good results by training/fine-tuning on a few minutes of a single speaker. This is a separate research problem, to which we do not have a solution yet. Thus, we would most likely not be able to resolve your issue. 
-- You must train the expert discriminator for your own dataset before training Wav2Lip.
-- If it is your own dataset downloaded from the web, in most cases, needs to be sync-corrected.
-- Be mindful of the FPS of the videos of your dataset. Changes to FPS would need significant code changes. 
-- The expert discriminator's eval loss should go down to ~0.25 and the Wav2Lip eval sync loss should go down to ~0.2 to get good results. 
+Suitable for Google Colab and cloud servers
 
-When raising an issue on this topic, please let us know that you are aware of all these points.
+Supports CPU and GPU inference
 
-We have an HD model trained on a dataset allowing commercial usage. The size of the generated face will be 192 x 288 in our new model.
+Easier frontend integration for client access
 
-Evaluation
-----------
-Please check the `evaluation/` folder for the instructions.
+⚠️ The core Wav2Lip model and inference logic remain unchanged.
 
-License and Citation
-----------
-This repository can only be used for personal/research/non-commercial purposes. However, for commercial requests, please contact us directly at radrabha.m@research.iiit.ac.in or prajwal.k@research.iiit.ac.in. We have an HD model trained on a dataset allowing commercial usage. The size of the generated face will be 192 x 288 in our new model. Please cite the following paper if you use this repository:
-```
-@inproceedings{10.1145/3394171.3413532,
-author = {Prajwal, K R and Mukhopadhyay, Rudrabha and Namboodiri, Vinay P. and Jawahar, C.V.},
-title = {A Lip Sync Expert Is All You Need for Speech to Lip Generation In the Wild},
-year = {2020},
-isbn = {9781450379885},
-publisher = {Association for Computing Machinery},
-address = {New York, NY, USA},
-url = {https://doi.org/10.1145/3394171.3413532},
-doi = {10.1145/3394171.3413532},
-booktitle = {Proceedings of the 28th ACM International Conference on Multimedia},
-pages = {484–492},
-numpages = {9},
-keywords = {lip sync, talking face generation, video generation},
-location = {Seattle, WA, USA},
-series = {MM '20}
-}
-```
+🧠 System Requirements
+
+Python 3.8+ (Fully tested on Python 3.12)
+
+CUDA (optional, but recommended)
+
+FFmpeg
+
+NVIDIA GPU (for best quality & speed)
+
+📦 Installation
+
+Clone the repository:
+
+git clone https://github.com/nuhammad2033/Wav2Lip_Maaz.git
+cd Wav2Lip_Maaz
 
 
-Acknowledgments
-----------
-Parts of the code structure are inspired by this [TTS repository](https://github.com/r9y9/deepvoice3_pytorch). We thank the author for this wonderful code. The code for Face Detection has been taken from the [face_alignment](https://github.com/1adrianb/face-alignment) repository. We thank the authors for releasing their code and models. We thank [zabique](https://github.com/zabique) for the tutorial collab notebook.
+Install dependencies:
+
+pip install -r requirements.txt
+
+
+Download the pretrained checkpoints and place them in the checkpoints/ directory:
+
+wav2lip.pth
+
+wav2lip_gan.pth (recommended for better quality)
+
+🚀 Inference Example
+python inference.py \
+--checkpoint_path checkpoints/wav2lip_gan.pth \
+--face input.mp4 \
+--audio audio.wav \
+--pads 0 20 0 0 \
+--fps 25 \
+--outfile output.mp4
+
+🟢 Best Quality Recommendations
+
+For optimal lip-sync and video quality:
+
+Use front-facing, high-resolution video
+
+Ensure good lighting
+
+Use 16kHz mono audio
+
+Prefer wav2lip_gan.pth
+
+Run inference on GPU
+
+Post-process output using FFmpeg or GFPGAN
+
+🛠️ Python 3.12 & Librosa Compatibility Fix
+❗ Issue
+
+Newer versions of librosa do not accept positional arguments in:
+
+librosa.filters.mel()
+
+
+This causes the following error:
+
+TypeError: mel() takes 0 positional arguments but 2 positional arguments were given
+
+✅ Option 1 – Patch audio.py (Recommended)
+
+Edit _build_mel_basis() in audio.py:
+
+def _build_mel_basis():
+    return librosa.filters.mel(
+        sr=hp.sample_rate,
+        n_fft=hp.n_fft,
+        n_mels=hp.num_mels,
+        fmin=hp.fmin,
+        fmax=hp.fmax
+    )
+
+✔ Why this works
+
+Uses keyword arguments instead of positional
+
+Fully compatible with:
+
+Python 3.12+
+
+Latest librosa
+
+CPU & GPU inference
+
+After saving the file, rerun inference.
+
+⚠️ Option 2 – Downgrade Librosa (Not Recommended)
+pip uninstall -y librosa
+pip install librosa==0.7.0
+
+❌ Limitations
+
+Requires Python ≤ 3.9
+
+Not compatible with Python 3.12
+
+Not suitable for modern deployments
+
+🌐 Client Access & Deployment (Suggested Architecture)
+Client Browser
+   ↓
+Frontend (HTML / Streamlit)
+   ↓
+Backend API (FastAPI / Flask)
+   ↓
+Wav2Lip Inference (This Repository)
+
+
+This setup allows secure and controlled access for clients without exposing the model directly.
+
+⚠️ Limitations
+
+Extreme head movements may reduce accuracy
+
+Singing and exaggerated expressions are not fully supported
+
+Output quality depends heavily on input quality
+
+📜 License & Ethical Use
+
+This repository follows the same license terms as the original Wav2Lip project.
+Users must ensure:
+
+Proper attribution to original authors
+
+Ethical and legal use of generated content
+
+No impersonation, misuse, or deceptive applications
+
+👤 Maintainer
+
+Muhammad Maaz
+AI / ML Engineer
+Customized for client demos, testing, and deployment workflows.
+
+🙏 Acknowledgement
+
+I would like to express my sincere thanks to Rudrabha and the Wav2Lip authors for their exceptional research and open-source contribution.
+This work builds upon their foundation with respect, aiming only to improve usability, compatibility, and real-world accessibility.
