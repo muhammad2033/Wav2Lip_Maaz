@@ -71,7 +71,7 @@ NVIDIA GPU (for best quality & speed)
 
 Clone the repository:
 
-git clone https://github.com/nuhammad2033/Wav2Lip_Maaz.git
+git clone https://github.com/muhammad2033/Wav2Lip_Maaz.git
 cd Wav2Lip_Maaz
 
 
