@@ -73,7 +73,7 @@ Clone the repository:
 
 git clone https://github.com/muhammad2033/Wav2Lip_Maaz.git
 cd Wav2Lip_Maaz
-
+Google Colab File: https://colab.research.google.com/drive/1IOKIKh9RZAu3W4YMWAOi_mqAWND3aXWG
 
 Install dependencies:
 
